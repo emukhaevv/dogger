@@ -1,6 +1,6 @@
-# sv
+# ЦифраБуква
+  **Приложение для крутых леди и джентельменов, которые ценят свое время и хотят быстрый и адаптируемый _Task List_**
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
 ## Creating a project
 
