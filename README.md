@@ -1,38 +1,10 @@
 # ЦифраБуква
   **Приложение для крутых леди и джентельменов, которые ценят свое время и хотят быстрый и адаптируемый _Task List_**
 
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Главные особенности
+`Минимум движений`
+  *Слишком много кнопок, я захожу чтоб заметку сделать или в три в ряд поиграть!?* **У нас нет!**
+  Мы максимально упростили интерфейс и сделали доступ к любой функции с минимумом телодвижений, зайди напиши желаемое в течении <ins>нескольких секунд</ins>!
+`Максимум адаптивности`
+  *Не нравится что-то в интерфейсе?* **Измени!**
+  Большой выбор настроек позволит каждому пользователю подстроить приложение под свою руку и сделать его максимально <ins>привычным и удобный</ins> именно для него!
