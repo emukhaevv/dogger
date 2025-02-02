@@ -1,4 +1,5 @@
-![trans_bg](https://github.com/user-attachments/assets/4dc36a51-cc11-4ad1-a51e-ee5174beaf03)
+![trans_bg (1)](https://github.com/user-attachments/assets/2f4ba93c-f3ef-4757-8403-f02415956870)
+
 # :cut_of_meat: Gepard 🐆
 
   **Приложение для леди и джентельменов, которые ценят свое время и хотят быстрый и адаптируемый _Task List_**
