@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { AUTO_POSITION, END_POSITION, START_POSITION } from '../constants';
 	import dots from '../images/dots.svg';
 	import trash from '../images/trash.svg';
 
@@ -6,35 +7,55 @@
 		id: number;
 		title: string;
 		description: string;
-		onDeleteAction: (id: number) => void;
+		onDelete: (id: number) => void;
 	};
 
-	const { id, title, description, onDeleteAction }: Props = $props();
+	const { id, title, description, onDelete }: Props = $props();
 
-	let position = $state(233);
-	let startedClick = $state(0);
-	let isOpened = $state(false);
+	let startedSlideClick = $state(0);
+	let position = $state(START_POSITION);
+	let startedPosition = $state(START_POSITION);
+
 	let isClicked = $state(false);
+	let isBlocked = $state(false);
 
 	const onTouchDown = (e: TouchEvent) => {
-		startedClick = e.changedTouches[0].pageX;
+		if (isBlocked) return;
+
 		isClicked = true;
+
+		startedSlideClick = e.changedTouches[0].pageX;
+		startedPosition = position === START_POSITION ? START_POSITION : END_POSITION;
 	};
 
 	const onTouchUp = () => {
+		if (isClicked) {
+			if (position <= AUTO_POSITION) {
+				position = END_POSITION;
+				isBlocked = true;
+			} else {
+				position = START_POSITION;
+			}
+		}
+
 		isClicked = false;
 	};
 
 	const onMove = (e: TouchEvent) => {
-		if (!isOpened && startedClick - e.changedTouches[0].pageX >= 100) {
-			isOpened = true;
-			position = 33;
-		}
+		if (isBlocked) return;
+
+		const positionDifference = startedSlideClick - e.changedTouches[0].pageX;
+		const updatedPosition = startedPosition - positionDifference;
+
+		if (updatedPosition < END_POSITION) return;
+		position = updatedPosition;
 	};
 
 	const onDeleteEnd = () => {
+		if (position > END_POSITION) return;
+
 		setTimeout(() => {
-			onDeleteAction(id);
+			onDelete(id);
 		}, 10);
 	};
 </script>
@@ -54,7 +75,12 @@
 
 	<img src={dots} alt="" />
 
-	<div class="delete" ontransitionend={onDeleteEnd} style="transform: translateX({position}px)">
+	<div
+		class="delete"
+		ontransitionend={onDeleteEnd}
+		class:delete-animation={!isClicked}
+		style="transform: translateX({position}px)"
+	>
 		<img alt="" src={trash} class="trash" />
 	</div>
 </div>
@@ -90,7 +116,10 @@
 		position: absolute;
 		transform: translateX(233px);
 		background-color: #e2917f;
-		transition: transform ease 0.4s;
 		border-radius: 14px 0 0 14px;
+	}
+
+	.delete-animation {
+		transition: transform ease 0.4s;
 	}
 </style>
