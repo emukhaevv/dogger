@@ -18,6 +18,7 @@
 
 	let isClicked = $state(false);
 	let isBlocked = $state(false);
+	let isMoving = $state(false);
 
 	const onTouchDown = (e: TouchEvent) => {
 		if (isBlocked) return;
@@ -38,11 +39,14 @@
 			}
 		}
 
+		isMoving = false;
 		isClicked = false;
 	};
 
 	const onMove = (e: TouchEvent) => {
 		if (isBlocked) return;
+
+		isMoving = true;
 
 		const positionDifference = startedSlideClick - e.changedTouches[0].pageX;
 		const updatedPosition = startedPosition - positionDifference;
@@ -58,6 +62,10 @@
 			onDelete(id);
 		}, 10);
 	};
+
+	$effect(() => {
+		document.body.style.overflow = isMoving ? 'hidden' : 'auto';
+	});
 </script>
 
 <div

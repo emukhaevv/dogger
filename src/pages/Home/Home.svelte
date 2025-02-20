@@ -7,10 +7,8 @@
 	const { todoItems, deleteItem } = store;
 </script>
 
-<div class="items">
-	{#each $todoItems as item (item)}
-		<div animate:flip>
-			<Item {...item} onDelete={deleteItem} />
-		</div>
-	{/each}
-</div>
+{#each $todoItems as item (item)}
+	<div animate:flip>
+		<Item {...item} onDelete={deleteItem} />
+	</div>
+{/each}
