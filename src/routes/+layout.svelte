@@ -17,6 +17,6 @@
 		overflow: hidden;
 	}
 	.content {
-		padding: 40px 30px;
+		padding: 40px 0;
 	}
 </style>

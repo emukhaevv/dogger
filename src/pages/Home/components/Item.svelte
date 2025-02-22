@@ -74,30 +74,35 @@
 <div
 	tabindex="0"
 	role="button"
-	class="content"
+	class="wrapper"
 	ontouchmove={onMove}
 	ontouchend={onTouchUp}
 	ontouchstart={onTouchDown}
-	class:content-delete={isDeleteAnimation}
 >
-	<div>
-		<div class="title">{title}</div>
-		<div class="description">{description}</div>
-	</div>
+	<div class="content" class:content-delete={isDeleteAnimation}>
+		<div>
+			<div class="title">{title}</div>
+			<div class="description">{description}</div>
+		</div>
 
-	<img src={dots} alt="" />
+		<img src={dots} alt="" />
 
-	<div
-		class="delete"
-		ontransitionend={onDeleteEnd}
-		class:delete-animation={!isClicked}
-		style="transform: translateX({position}px)"
-	>
-		<img alt="" src={trash} class="trash" />
+		<div
+			class="delete"
+			ontransitionend={onDeleteEnd}
+			class:delete-animation={!isClicked}
+			style="transform: translateX({position}px)"
+		>
+			<img alt="" src={trash} class="trash" />
+		</div>
 	</div>
 </div>
 
 <style>
+	.wrapper {
+		padding: 0 30px;
+	}
+
 	.content {
 		display: flex;
 		align-items: center;
@@ -137,6 +142,6 @@
 	}
 
 	.delete-animation {
-		transition: transform linear 0.4s;
+		transition: transform linear 0.2s;
 	}
 </style>
