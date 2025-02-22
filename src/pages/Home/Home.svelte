@@ -8,7 +8,7 @@
 </script>
 
 {#each $todoItems as item (item)}
-	<div animate:flip>
+	<div animate:flip={{ duration: 400 }}>
 		<Item {...item} onDelete={deleteItem} />
 	</div>
 {/each}

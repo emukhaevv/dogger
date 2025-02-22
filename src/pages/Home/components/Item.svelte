@@ -16,9 +16,10 @@
 	let position = $state(START_POSITION);
 	let startedPosition = $state(START_POSITION);
 
+	let isMoving = $state(false);
 	let isClicked = $state(false);
 	let isBlocked = $state(false);
-	let isMoving = $state(false);
+	let isDeleteAnimation = $state(false);
 
 	const onTouchDown = (e: TouchEvent) => {
 		if (isBlocked) return;
@@ -58,9 +59,11 @@
 	const onDeleteEnd = () => {
 		if (position > END_POSITION) return;
 
+		isDeleteAnimation = true;
+
 		setTimeout(() => {
 			onDelete(id);
-		}, 10);
+		}, 400);
 	};
 
 	$effect(() => {
@@ -75,6 +78,7 @@
 	ontouchmove={onMove}
 	ontouchend={onTouchUp}
 	ontouchstart={onTouchDown}
+	class:content-delete={isDeleteAnimation}
 >
 	<div>
 		<div class="title">{title}</div>
@@ -101,6 +105,11 @@
 		padding: 20px 0;
 		border-bottom: solid 1px #f2f2f2;
 		position: relative;
+		transition: opacity 0.4s ease;
+	}
+
+	.content-delete {
+		opacity: 0;
 	}
 
 	.title {
