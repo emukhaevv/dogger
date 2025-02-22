@@ -63,7 +63,7 @@
 
 		setTimeout(() => {
 			onDelete(id);
-		}, 400);
+		}, 200);
 	};
 
 	$effect(() => {
@@ -105,7 +105,7 @@
 		padding: 20px 0;
 		border-bottom: solid 1px #f2f2f2;
 		position: relative;
-		transition: opacity 0.4s ease;
+		transition: opacity 0.2s linear;
 	}
 
 	.content-delete {
@@ -137,6 +137,6 @@
 	}
 
 	.delete-animation {
-		transition: transform ease 0.4s;
+		transition: transform linear 0.4s;
 	}
 </style>
